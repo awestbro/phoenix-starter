@@ -1,0 +1,23 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <div class="field">
+    <label class="label">Email</label>
+    <%= text_input f, :email, placeholder: "Email", class: "input" %>
+    <%= error_tag f, :email %>
+  </div>
+  <div class="field">
+    <label class="label">Username</label>
+    <%= text_input f, :username, placeholder: "Username", class: "input" %>
+    <%= error_tag f, :username %>
+  </div>
+  <div class="field">
+    <label class="label">Password</label>
+    <%= password_input f, :password, placeholder: "Password", class: "input" %>
+    <%= error_tag f, :password %>
+  </div>
+  <div class="field">
+    <label class="label">Password Confirmation</label>
+    <%= password_input f, :password_confirmation, placeholder: "Password Confirmation", class: "input" %>
+    <%= error_tag f, :password_confirmation %>
+  </div>
+  <%= submit "Submit", class: "button is-primary" %>
+<% end %>

@@ -1,0 +1,14 @@
+.bookmark {
+  @extend .card, .py-1, .px-2, .mt-1, .d-flex, .flex-row, .align-items-center;
+
+    .link {
+    @extend .ml-2;
+    word-break: break-all;
+  }
+
+  .domain {
+    @extend .ml-1;
+
+    font-size: 12px;
+  }
+}

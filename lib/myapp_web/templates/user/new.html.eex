@@ -1,0 +1,6 @@
+<section class="section">
+  <div class="container">
+    <%= render MyAppWeb.LayoutView, "header.html", text: "New User" %>
+    <%= render "form.html", Map.put(assigns, :action, user_path(@conn, :create)) %>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Welcome to MyApp!
+      </h1>
+      <h2 class="subtitle">
+        Hit yourself right in the niche
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h3 class="title">Application colors</h3>
+    <div>
+      <button type="button" class="button ma1">Normal button</button>
+      <button type="button" class="button ma1 is-primary">Primary</button>
+      <button type="button" class="button ma1 is-success">Success</button>
+      <button type="button" class="button ma1 is-info">Info</button>
+      <button type="button" class="button ma1 is-warning">Warning</button>
+      <button type="button" class="button ma1 is-danger">Danger</button>
+      <button type="button" class="button ma1 is-link">Link</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <%= if @current_user do %>
+      <h3 class="title">Pages</h3>
+      <div>
+        <%= link "Users", to: user_path(@conn, :index) %>
+      </div>
+    <% end %>
+  </div>
+</section>
+

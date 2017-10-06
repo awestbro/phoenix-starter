@@ -1,0 +1,47 @@
+$max-container-width: 1400px;
+
+.app-container {
+  max-width: $max-container-width;
+}
+
+.navbar-container {
+  @extend .container;
+}
+
+@include media-breakpoint-up(lg) {
+  .navbar-container {
+    width: $max-container-width;
+  }
+}
+
+.body-container {
+  @extend .row, .justify-content-center;
+
+  .sidebar-container {
+    @extend .col-sm-12, .col-lg-3, .mb-3;
+
+    .sidebar-header {
+      @extend .d-flex, .flex-row, .justify-content-between, .align-items-center, .mb-2;
+
+      .sidebar-title {
+        font-weight: 400;
+        font-size: 18px;
+        margin: 0px;
+      }
+    }
+  }
+
+  .main-container {
+    @extend .col-sm-12, .col-lg-9;
+  }
+}
+
+.text-light-grey {
+  color: $light-grey;
+}
+
+.page-title {
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}

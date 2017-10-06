@@ -1,0 +1,19 @@
+<section class="section">
+  <div class="container">
+    <%= render MyAppWeb.LayoutView, "header.html", text: "Activation Status" %>
+    <%= if @user.activated do %>
+      <div>It looks like your account is already active!</div>
+    <% else %>
+      <div>An activation email has been sent to: <strong><%= @user.email %></strong></div>
+      <div>Please check your email for an activation link!</div>
+      <hr />
+      <div>If you have not recieved an email, <%= link "click here", to: account_path(@conn, :resend_activation, @current_user.id)%> to resend the validation email.</div>
+      <hr />
+      <div>If you are still having trouble, please <a href="mailto:support@myapp.com">contact support</a></div>
+    <% end %>
+    <%= if Mix.env == :dev do %>
+      <hr />
+      DEV MODE: <a href="<%= MyAppWeb.Router.Helpers.url(@conn) <> "/sent_emails" %>">Check Emails</a>
+    <% end %>
+  </div>
+</div>

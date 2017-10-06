@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%= if Guardian.Plug.current_token(@conn) do %>
+      <meta name='guardian_token' content="<%= Guardian.Plug.current_token(@conn) %>">
+    <% end %>
+    <title><%= assigns[:page_title] || "MyApp" %></title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/dist/app.css") %>">
+    <link rel="icon" type="image/png" href="<%= static_path(@conn, "/files/favicon-32x32.png") %>" sizes="32x32" />
+    <link rel="icon" type="image/png" href="<%= static_path(@conn, "/files/favicon.ico") %>" sizes="16x16" />
+    <%= if Mix.env != :dev do %>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-106114754-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+    <% end %>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar">
+
+        <div class="navbar-brand">
+          <%= link "MyApp", to: page_path(@conn, :index), class: "navbar-item page-title is-primary" %>
+          <div class="navbar-burger" data-target="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="navbar-menu" id="nav-menu">
+          <!-- left side of navbar -->
+          <div class="navbar-start"></div>
+          <!-- right side of navbar -->
+          <div class="navbar-end">
+            <%= if @current_user do %>
+              <%= link @current_user.username, to: user_path(@conn, :show, @current_user.id), class: "navbar-item" %>
+              <%= if !@current_user.activated do %>
+                <%= link "Activation Status", to: account_path(@conn, :show_activation_status, @current_user.id), class: "navbar-item" %>
+              <% end %>
+              <%= link "Log out", to: session_path(@conn, :delete, @current_user), method: "delete", class: "navbar-item" %>
+            <% else %>
+              <%= link "Register", to: user_path(@conn, :new), class: "navbar-item" %>
+              <%= link "Log In", to: session_path(@conn, :new), class: "navbar-item" %>
+            <% end %>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+
+    <%= render MyAppWeb.LayoutView, "notification.html", assigns %>
+
+    <%= render @view_module, @view_template, assigns %>
+    <script src="<%= static_path(@conn, "/dist/app.js") %>"></script>
+  </body>
+</html>

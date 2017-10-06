@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="container">
+    <%= render MyAppWeb.LayoutView, "header.html", text: "Login" %>
+    <%= form_for @conn, session_path(@conn, :create), [as: :session], fn f -> %>
+      <div class="field">
+        <%= text_input f, :username, placeholder: "Username", class: "input" %>
+      </div>
+      <div class="field">
+        <%= password_input f, :password, placeholder: "Password", class: "input" %>
+      </div>
+      <%= submit "Log in", class: "button is-primary" %>
+      <%= button("Forgot password?", to: account_path(@conn, :show_reset_password), method: "get", class: "button is-info is-outlined") %>
+    <% end %>
+  </div>
+</section>

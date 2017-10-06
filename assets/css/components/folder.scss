@@ -1,0 +1,33 @@
+.folder {
+  @extend .mt-2;
+
+  .title {
+    @extend .px-1, .py-2, .pl-2, .bg-primary, .text-white;
+    width: 100%;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+
+    i {
+      @extend .mr-1;
+    }
+  }
+}
+
+.folder-contents {
+  @extend .pl-2;
+  position: relative;
+  &:after {
+    content: "";
+    // background: $app-primary;
+    background: #d0d0d0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    // transform: translate(50%, 0%);
+    height: calc(100% - 10px);
+    width: 1px;
+  }
+}

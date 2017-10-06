@@ -1,0 +1,22 @@
+.card {
+  background-color: $card-bg;
+  border: 1px solid grey;
+  border-radius: 2px;
+  border-color: $card-border;
+
+  .card-title {
+    @extend .py-2, .px-3, .mb-0;
+  }
+
+  .card-body {
+    @extend .py-2, .px-3;
+  }
+
+  hr {
+    @extend .my-1;
+    width: 98%;
+    height: 1px;
+    border: none;
+    background-color: darken($page-background, 4%);
+  }
+}

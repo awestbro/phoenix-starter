@@ -1,0 +1,17 @@
+<section class="section">
+  <div class="container">
+    <%= render MyAppWeb.LayoutView, "header.html", text: "User" %>
+    <ul>
+      <li>
+        <strong>Username:</strong>
+        <%= @user.username %>
+      </li>
+    </ul>
+    <%= if @current_user == @user do %>
+      <div class="mt3">
+        <%= link "Edit", to: user_path(@conn, :edit, @user) %>
+        <%= link "Delete", to: user_path(@conn, :delete, @user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </div>
+    <% end %>
+  </div>
+</section>

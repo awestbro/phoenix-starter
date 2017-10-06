@@ -1,0 +1,21 @@
+<section class="section">
+  <div class="container">
+    <%= render MyAppWeb.LayoutView, "header.html", text: "Listing Users" %>
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for user <- @users do %>
+          <tr>
+            <td><%= user.username %></td>
+            <td><%= link "Show", to: user_path(@conn, :show, user.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

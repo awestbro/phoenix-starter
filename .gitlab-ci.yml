@@ -1,0 +1,32 @@
+image: elixir:1.5.1
+
+services:
+  - postgres:9.6
+
+test:
+  stage: test
+  variables:
+    MIX_ENV: "test"
+  script:
+    - apt-get update
+    - apt-get install -y postgresql-client
+    - mix local.hex --force
+    - mix deps.get --only test
+    - mix local.rebar --force
+    - mix test
+
+deploy:
+  stage: deploy
+  script:
+    - apt-get update
+    - apt-get install apt-transport-https
+    - apt-get install -y ruby ruby-dev rubygems-integration
+    - echo "deb https://cli-assets.heroku.com/branches/stable/apt ./" > /etc/apt/sources.list.d/heroku.list
+    - wget -O- https://cli-assets.heroku.com/apt/release.key | apt-key add -
+    - apt-get update
+    - apt-get install -y heroku
+    - gem install dpl
+    - dpl --provider=heroku --app=myapp --api-key=$HEROKU_API_KEY
+    - heroku run "POOL_SIZE=2 mix ecto.migrate" --exit-code --app myapp
+  only:
+    - production
