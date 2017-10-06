@@ -56,7 +56,7 @@ This project does rely on some environment variables for api keys etc. So you wi
 
 Check the `config/prod.exs`
 
-I use heroku at the moment for deployment, for other deployment options [check out phoenix deploymant guides](http://www.phoenixframework.org/docs/deployment).
+I use heroku at the moment for deployment, for other deployment options [check out phoenix deployment guides](http://www.phoenixframework.org/docs/deployment).
 
 ### Learn more about Phoenix
 
