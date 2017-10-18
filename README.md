@@ -1,6 +1,9 @@
 Phoenix Starter
 ===============
 
+![Screenshot](docs/assets/home.png)
+
+
 Open source starter project for Phoenix framework. This is a slightly modified default Phoenix setup with the addition of webpack and yarn for frontend asset management rather than brunch. It also includes a basic user registration module covering common cases like user activation and forgotten passwords.
 
 ### Libraries included
@@ -41,6 +44,14 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 To make this app your own, do a case-sensitive find/ replace in this folder for MyApp => NewName and myapp => newname. You will also have to replace two folder structures under `lib/myapp*` and `test/myapp*`
+
+### Development
+
+I love development in Elixir and Phoenix. Well thought out libraries help you iterate on ideas quickly and safely with beautiful helper functions.
+
+One of my favorite tools is the Bamboo development plugin which lets you send and view emails on a development server without actually sending the emails:
+
+![Email workflow](docs/assets/dev_email.png)
 
 ### Deployment
 
