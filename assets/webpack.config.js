@@ -1,5 +1,5 @@
 const path = require("path");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const supportedBrowsers = require("./browsers");
 
@@ -24,9 +24,14 @@ const webpackConfig = {
     extensions: [".js", ".jsx"],
   },
   plugins: [
-    new ExtractTextPlugin("app.css"),
+    new MiniCssExtractPlugin({
+      filename: "app.css",
+    }),
     new CopyWebpackPlugin([
-      {from: path.join(paths.src, 'static'), to: paths.static}
+      {
+        from: path.join(paths.src, 'static'),
+        to: paths.static
+      }
     ])
   ],
   module: {
@@ -37,7 +42,6 @@ const webpackConfig = {
         use: {
           loader: "babel-loader",
           options: {
-            babelrc: false,
             presets: [
               ["env", {
                 targets: {
@@ -53,14 +57,14 @@ const webpackConfig = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            "css-loader?importLoaders=1&minimize&sourceMap&-autoprefixer",
-            "postcss-loader",
-            "sass-loader",
-          ],
-        }),
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          "css-loader?importLoaders=1&minimize&sourceMap&-autoprefixer",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
 
     ],

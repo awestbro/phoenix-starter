@@ -21,6 +21,8 @@ config :myapp, MyAppWeb.Endpoint,
       "--watch-stdin",
       "--progress",
       "--color",
+      "--mode",
+      "development",
       cd: Path.expand("../assets", __DIR__)
     ]
   ]
