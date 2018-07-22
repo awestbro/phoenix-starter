@@ -22,6 +22,7 @@ const webpackConfig = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    symlinks: false,
   },
   plugins: [
     new MiniCssExtractPlugin({
