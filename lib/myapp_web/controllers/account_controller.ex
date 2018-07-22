@@ -24,7 +24,9 @@ defmodule MyAppWeb.AccountController do
         |> redirect(to: account_path(conn, :show_activation_status, user.id))
       !user.activated ->
         Accounts.update_user(user, %{activation_attempts: user.activation_attempts + 1})
-        Email.activation_email(conn, user) |> Mailer.deliver_now
+        conn
+        |> Email.activation_email(user)
+        |> Mailer.deliver_now
         conn
         |> put_flash(:info, "Activation email sent!")
         |> redirect(to: account_path(conn, :show_activation_status, user.id))
@@ -63,12 +65,12 @@ defmodule MyAppWeb.AccountController do
 
   def send_password_reset_email(conn, %{"email_params" => %{"email" => email}}) do
     user = Accounts.get_user_by_email(email)
-    # IO.inspect [Timex.to_unix(user.last_password_reset_attempt)]
     cond do
       user && can_reset_password(user.last_password_reset_attempt) ->
         user = Accounts.update_user!(user, %{password_reset_token: UUID.uuid4(), last_password_reset_attempt: NaiveDateTime.utc_now()})
-        # IO.inspect [Timex.to_unix(user.last_password_reset_attempt)]
-        MyApp.Email.reset_password_email(conn, user) |> MyApp.Mailer.deliver_now
+        conn
+        |> MyApp.Email.reset_password_email(user)
+        |> MyApp.Mailer.deliver_now
         conn
         |> put_flash(:info, "Password reset email sent!")
         |> redirect(to: page_path(conn, :index))

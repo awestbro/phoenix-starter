@@ -24,7 +24,9 @@ defmodule MyAppWeb.UserController do
     |> Map.merge(%{"type" => User.types().user, "activation_token" => UUID.uuid4(), "activated" => false})
     case Accounts.create_user(new_params) do
       {:ok, user} ->
-        Email.activation_email(conn, user) |> Mailer.deliver_now
+        conn
+        |> Email.activation_email(user)
+        |> Mailer.deliver_now
         conn
         |> MyAppWeb.Auth.login(user)
         |> redirect(to: account_path(conn, :show_activation_status, user.id))
@@ -39,7 +41,6 @@ defmodule MyAppWeb.UserController do
   end
 
   def edit(conn, %{"id" => id}) do
-    # TODO: Make edit take only params that can be modified
     user = Accounts.get_user!(id)
     if can_modify_user?(conn, user) do
       changeset = Accounts.change_user(user)
