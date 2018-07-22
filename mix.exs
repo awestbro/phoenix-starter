@@ -47,6 +47,7 @@ defmodule MyApp.Mixfile do
       {:phoenix_live_reload, "~> 1.1.5", only: :dev},
       {:phoenix_pubsub, "~> 1.0"},
       {:postgrex, "~> 0.13.5"},
+      {:pre_commit, "~> 0.3.4", only: :dev},
       {:timex, "~> 3.3.0"},
       {:uuid, "~> 1.1.7"}
     ]
