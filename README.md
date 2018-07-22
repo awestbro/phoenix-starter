@@ -8,31 +8,31 @@ Open source starter project for Phoenix framework. This is a slightly modified d
 
 ### Libraries included
 
-Phoenix:
+#### Elixir:
 - [Phoenix Framework](http://phoenixframework.org/)
-- [Comeonin](https://github.com/riverrun/comeonin)
-- [Bcrypt Elixir](https://github.com/riverrun/bcrypt_elixir)
-- [Guardian](https://github.com/ueberauth/guardian)
 - [HTTPoison](https://github.com/edgurgel/httpoison)
 - [UUID](https://github.com/zyro/elixir-uuid)
 - [Timex](https://github.com/bitwalker/timex)
 - [Credo](https://github.com/rrrene/credo)
 - [Bamboo](https://github.com/thoughtbot/bamboo)
+- [Comeonin](https://github.com/riverrun/comeonin)
+- [Bcrypt Elixir](https://github.com/riverrun/bcrypt_elixir)
+- [Guardian](https://github.com/ueberauth/guardian)
 
 Front end:
+- [Bulma](http://bulma.io/)
 - [Yarn](https://yarnpkg.com/en/)
 - [Webpack](https://webpack.js.org/)
 - [Babel](https://babeljs.io/)
 - [PostCSS](https://github.com/postcss/postcss)
 - [SASS](http://sass-lang.com/)
-- [Bulma](http://bulma.io/)
 
 ### Installation
 
 Tested with:
-- Erlang/OTP 20
-- Elixir 1.5.1
-- Yarn 1.1.0
+- Erlang/OTP `21`
+- Elixir `1.6.6`
+- Yarn `1.7.0`
 
 To start your Phoenix server:
 
@@ -42,6 +42,8 @@ To start your Phoenix server:
   * Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+### Make it your own!
 
 To make this app your own, do a case-sensitive find/ replace in this folder for MyApp => NewName and myapp => newname. You will also have to replace two folder structures under `lib/myapp*` and `test/myapp*`
 
