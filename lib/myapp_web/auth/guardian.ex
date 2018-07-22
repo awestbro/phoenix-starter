@@ -14,6 +14,7 @@ defmodule MyAppWeb.Guardian do
   def resource_from_claims(%{"sub" => "User:" <> id}) do
     {:ok, Repo.get(User, id)}
   end
+
   def resource_from_claims(_claims) do
     {:error, "Unknown resource type"}
   end

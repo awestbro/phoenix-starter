@@ -1,6 +1,5 @@
 use Mix.Config
 
-
 # General application configuration
 config :myapp,
   reset_password_interval_ms: 1000
@@ -16,8 +15,15 @@ config :myapp, MyAppWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/webpack/bin/webpack.js", "--watch-stdin", "--progress", "--color",
-                    cd: Path.expand("../assets", __DIR__)]]
+  watchers: [
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--watch-stdin",
+      "--progress",
+      "--color",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #

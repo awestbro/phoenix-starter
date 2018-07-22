@@ -6,8 +6,20 @@ defmodule MyApp.AccountsTest do
   describe "users" do
     alias MyApp.Accounts.User
 
-    @valid_attrs %{email: "some@email.com", password: "some password", password_confirmation: "some password", password_hash: "some password_hash", type: User.types().user, username: "some username"}
-    @update_attrs %{email: "some@updatedemail.com", password_hash: "some updated password_hash", type: User.types().admin, username: "some updated username"}
+    @valid_attrs %{
+      email: "some@email.com",
+      password: "some password",
+      password_confirmation: "some password",
+      password_hash: "some password_hash",
+      type: User.types().user,
+      username: "some username"
+    }
+    @update_attrs %{
+      email: "some@updatedemail.com",
+      password_hash: "some updated password_hash",
+      type: User.types().admin,
+      username: "some updated username"
+    }
     @invalid_attrs %{email: nil, password_hash: nil, type: User.types().admin, username: nil}
 
     def user_fixture(attrs \\ %{}) do

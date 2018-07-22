@@ -44,7 +44,7 @@ config :myapp, MyAppWeb.Guardian,
   allower_algos: ["HS512"],
   verify_module: Guardian.JWT,
   issuer: "myapp",
-  ttl: { 30, :days },
+  ttl: {30, :days},
   allowed_drift: 2000,
   verify_issuer: true,
   secret_key: System.get_env("GUARDIAN_SECRET")

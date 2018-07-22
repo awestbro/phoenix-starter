@@ -30,7 +30,7 @@ defmodule MyAppWeb.ConnCase do
         build_conn()
         |> bypass_through(MyApp.Router, [:browser])
         |> get("/")
-        |> Map.update!(:state, fn (_) -> :set end)
+        |> Map.update!(:state, fn _ -> :set end)
         |> MyAppWeb.Guardian.Plug.sign_in(user, @claims)
         |> Plug.Conn.send_resp(200, "Flush the session")
         |> recycle
@@ -38,6 +38,7 @@ defmodule MyAppWeb.ConnCase do
 
       def authenticated_json_connection(user) do
         {:ok, jwt, _full_claims} = MyAppWeb.Guardian.encode_and_sign(user)
+
         build_conn()
         |> bypass_through(MyApp.Router, [:api])
         |> get("/")
@@ -48,13 +49,13 @@ defmodule MyAppWeb.ConnCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(MyApp.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(MyApp.Repo, {:shared, self()})
     end
+
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
-
 end

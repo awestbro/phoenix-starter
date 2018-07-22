@@ -3,34 +3,43 @@ defmodule MyApp.Accounts.User do
   import Ecto.Changeset
   alias MyApp.Accounts.User
 
-
   schema "users" do
-    field :username, :string
-    field :email, :string
-    field :password, :string, virtual: true
-    field :password_confirmation, :string, virtual: true
-    field :password_hash, :string
-    field :type, :string
-    field :activation_token, Ecto.UUID
-    field :activated, :boolean
-    field :activation_attempts, :integer
-    field :password_reset_token, Ecto.UUID
-    field :last_password_reset_attempt, :naive_datetime
+    field(:username, :string)
+    field(:email, :string)
+    field(:password, :string, virtual: true)
+    field(:password_confirmation, :string, virtual: true)
+    field(:password_hash, :string)
+    field(:type, :string)
+    field(:activation_token, Ecto.UUID)
+    field(:activated, :boolean)
+    field(:activation_attempts, :integer)
+    field(:password_reset_token, Ecto.UUID)
+    field(:last_password_reset_attempt, :naive_datetime)
 
     timestamps()
   end
 
-  def types, do: %{
-    user: "user",
-    user_paid: "user_paid",
-    moderator: "moderator",
-    admin: "admin",
-  }
+  def types,
+    do: %{
+      user: "user",
+      user_paid: "user_paid",
+      moderator: "moderator",
+      admin: "admin"
+    }
 
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:username, :email, :type, :activation_token, :activated, :activation_attempts, :password_reset_token, :last_password_reset_attempt])
+    |> cast(attrs, [
+      :username,
+      :email,
+      :type,
+      :activation_token,
+      :activated,
+      :activation_attempts,
+      :password_reset_token,
+      :last_password_reset_attempt
+    ])
     |> validate_required([:username, :email, :type])
     |> validate_inclusion(:type, Map.values(types()))
     |> validate_length(:username, min: 3, max: 30)
@@ -59,6 +68,7 @@ defmodule MyApp.Accounts.User do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
         put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))
+
       _ ->
         changeset
     end

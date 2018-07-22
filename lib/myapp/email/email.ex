@@ -3,7 +3,10 @@ defmodule MyApp.Email do
 
   # Usage: MyApp.Email.welcome_email(conn, user) |> MyApp.Mailer.deliver_now
   def activation_email(conn, user) do
-    activation_link = MyAppWeb.Router.Helpers.url(conn) <> MyAppWeb.Router.Helpers.account_path(conn, :activate, user.id, user.activation_token)
+    activation_link =
+      MyAppWeb.Router.Helpers.url(conn) <>
+        MyAppWeb.Router.Helpers.account_path(conn, :activate, user.id, user.activation_token)
+
     base_email()
     |> to(user.email)
     |> subject("MyApp - Activate your account!")
@@ -17,7 +20,10 @@ defmodule MyApp.Email do
   end
 
   def reset_password_email(conn, user) do
-    reset_link = MyAppWeb.Router.Helpers.url(conn) <> MyAppWeb.Router.Helpers.account_path(conn, :show_password_change, user.id, user.password_reset_token)
+    reset_link =
+      MyAppWeb.Router.Helpers.url(conn) <>
+        MyAppWeb.Router.Helpers.account_path(conn, :show_password_change, user.id, user.password_reset_token)
+
     base_email()
     |> to(user.email)
     |> subject("MyApp - Password reset")

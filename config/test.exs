@@ -1,6 +1,5 @@
 use Mix.Config
 
-
 # General application configuration
 config :myapp,
   reset_password_interval_ms: 250
@@ -23,5 +22,4 @@ config :myapp, MyApp.Repo,
   hostname: if(System.get_env("CI"), do: "postgres", else: "localhost"),
   pool: Ecto.Adapters.SQL.Sandbox
 
-config :myapp, MyApp.Mailer,
-  adapter: Bamboo.TestAdapter
+config :myapp, MyApp.Mailer, adapter: Bamboo.TestAdapter

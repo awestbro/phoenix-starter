@@ -16,8 +16,10 @@ defmodule MyAppWeb.Auth do
     cond do
       conn.assigns.current_user == nil ->
         "You must be logged in to perform that action"
+
       conn.assigns.current_user.activated == false ->
         "You must activate your account to perform that action"
+
       true ->
         "You must be logged in to perform that action"
     end
@@ -33,6 +35,7 @@ defmodule MyAppWeb.Auth do
           |> put_status(403)
           |> json(%{error: get_auth_error_message(conn)})
           |> halt()
+
         [:browser] ->
           conn
           |> put_flash(:error, get_auth_error_message(conn))
@@ -55,8 +58,10 @@ defmodule MyAppWeb.Auth do
     cond do
       user && checkpw(given_pass, user.password_hash) ->
         {:ok, login(conn, user)}
+
       user ->
         {:error, :unauthorized, conn}
+
       true ->
         dummy_checkpw()
         {:error, :not_found, conn}
@@ -66,5 +71,4 @@ defmodule MyAppWeb.Auth do
   def logout(conn) do
     MyAppWeb.Guardian.Plug.sign_out(conn)
   end
-
 end
