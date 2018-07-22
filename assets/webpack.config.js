@@ -14,7 +14,7 @@ const webpackConfig = {
   entry: {
     'app': ["babel-polyfill", path.join(paths.src, "js/app.js")],
     'collection': [path.join(paths.src, "js/pages/collection.js")],
-    'css': path.join(paths.src, "css/app.scss"),
+    'css': path.join(paths.src, "scss/app.scss"),
   },
   output: {
     path: paths.build,

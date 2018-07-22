@@ -1,0 +1,13 @@
+/* This file is for your main application css. */
+@import "~bulma/bulma.sass";
+@import "utils/spacing.scss";
+@import "utils/flex.scss";
+@import "utils/colors.scss";
+
+.section {
+  padding: 1rem 1.5rem;
+}
+
+.navbar-item a {
+  color: #4a4a4a;
+}
