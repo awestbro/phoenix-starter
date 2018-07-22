@@ -13,7 +13,7 @@ const webpackConfig = {
   context: process.cwd(),
   entry: {
     'app': ["babel-polyfill", path.join(paths.src, "js/app.js")],
-    'collection': [path.join(paths.src, "js/pages/collection.js")],
+    'individual': [path.join(paths.src, "js/pages/individual.js")],
     'css': path.join(paths.src, "scss/app.scss"),
   },
   output: {
