@@ -33,22 +33,22 @@ defmodule MyApp.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.3.3"},
-      {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.3.0"},
-      {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.11.2"},
-      {:phoenix_live_reload, "~> 1.1.5", only: :dev},
-      {:gettext, "~> 0.15.0"},
-      {:cowboy, "~> 1.1.2"},
-      {:comeonin, "~> 4.1.1"},
+      {:bamboo, "~> 1.0.0"},
       {:bcrypt_elixir, "~> 1.0.1"},
+      {:comeonin, "~> 4.1.1"},
+      {:cowboy, "~> 1.1.2"},
+      {:credo, "~> 0.9.3", only: [:dev], runtime: false},
+      {:gettext, "~> 0.15.0"},
       {:guardian, "~> 0.14.5"},
       {:httpoison, "~> 1.2.0"},
-      {:uuid, "~> 1.1.7"},
+      {:phoenix, "~> 1.3.3"},
+      {:phoenix_ecto, "~> 3.3.0"},
+      {:phoenix_html, "~> 2.11.2"},
+      {:phoenix_live_reload, "~> 1.1.5", only: :dev},
+      {:phoenix_pubsub, "~> 1.0"},
+      {:postgrex, "~> 0.13.5"},
       {:timex, "~> 3.3.0"},
-      {:credo, "~> 0.9.3", only: [:dev], runtime: false},
-      {:bamboo, "~> 1.0.0"}
+      {:uuid, "~> 1.1.7"}
     ]
   end
 
