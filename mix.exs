@@ -39,7 +39,7 @@ defmodule MyApp.Mixfile do
       {:cowboy, "~> 1.1.2"},
       {:credo, "~> 0.9.3", only: [:dev], runtime: false},
       {:gettext, "~> 0.15.0"},
-      {:guardian, "~> 0.14.5"},
+      {:guardian, "~> 1.1.0"},
       {:httpoison, "~> 1.2.0"},
       {:phoenix, "~> 1.3.3"},
       {:phoenix_ecto, "~> 3.3.0"},

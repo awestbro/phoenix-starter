@@ -7,16 +7,18 @@ defmodule MyAppWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.LoadResource
-    plug MyApp.Auth
+    # plug Guardian.Plug.VerifySession
+    # plug Guardian.Plug.LoadResource
+    plug MyAppWeb.Guardian.AuthBrowserPipeline
+    plug MyAppWeb.Auth
   end
 
   pipeline :api do
     plug :accepts, ["json"]
-    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
-    plug Guardian.Plug.LoadResource
-    plug MyApp.Auth
+    # plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    # plug Guardian.Plug.LoadResource
+    plug MyAppWeb.Guardian.AuthApiPipeline
+    plug MyAppWeb.Auth
   end
 
   scope "/", MyAppWeb do

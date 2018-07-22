@@ -6,7 +6,7 @@ defmodule MyAppWeb.SessionController do
   end
 
   def create(conn, %{"session" => %{"username" => user, "password" => pass}}) do
-    case MyApp.Auth.login_by_username_and_pass(conn, user, pass, repo: MyApp.Repo) do
+    case MyAppWeb.Auth.login_by_username_and_pass(conn, user, pass, repo: MyApp.Repo) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome back!")
@@ -20,7 +20,7 @@ defmodule MyAppWeb.SessionController do
 
   def delete(conn, _) do
     conn
-    |> MyApp.Auth.logout()
+    |> MyAppWeb.Auth.logout()
     |> redirect(to: page_path(conn, :index))
   end
 end

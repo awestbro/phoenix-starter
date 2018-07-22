@@ -110,11 +110,11 @@ defmodule MyAppWeb.UserControllerTest do
     end
 
     test "fails when conn is not the user", %{user: user} do
-      bad_user = Accounts.create_user(Map.merge(@create_attrs, %{ username: "ayy", password: "lmaooo" }))
+      {:ok, bad_user} = Accounts.create_user(Map.merge(@create_attrs, %{ email: "baduser@test.com", username: "ayy", password: "lmaooo", password_confirmation: "lmaooo" }))
       conn = authenticated_connection(bad_user)
       conn = delete conn, user_path(conn, :delete, user)
       assert redirected_to(conn) == page_path(conn, :index)
-      assert Map.get(conn.private, :phoenix_flash) == %{"error" => "You must be logged in to perform that action"}
+      assert Map.get(conn.private, :phoenix_flash) == %{"error" => "You are not authorized to do that!"}
     end
   end
 

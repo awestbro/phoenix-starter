@@ -21,21 +21,23 @@ defmodule MyAppWeb.ConnCase do
       use Phoenix.ConnTest
       import MyAppWeb.Router.Helpers
 
+      @claims %{typ: "access"}
+
       # The default endpoint for testing
       @endpoint MyAppWeb.Endpoint
 
-      def authenticated_connection(user, token \\ :token, opts \\ []) do
+      def authenticated_connection(user) do
         build_conn()
         |> bypass_through(MyApp.Router, [:browser])
         |> get("/")
         |> Map.update!(:state, fn (_) -> :set end)
-        |> Guardian.Plug.sign_in(user, token, opts)
+        |> MyAppWeb.Guardian.Plug.sign_in(user, @claims)
         |> Plug.Conn.send_resp(200, "Flush the session")
         |> recycle
       end
 
-      def authenticated_json_connection(user, token \\ :token, opts \\ []) do
-        {:ok, jwt, _full_claims} = Guardian.encode_and_sign(user)
+      def authenticated_json_connection(user) do
+        {:ok, jwt, _full_claims} = MyAppWeb.Guardian.encode_and_sign(user)
         build_conn()
         |> bypass_through(MyApp.Router, [:api])
         |> get("/")

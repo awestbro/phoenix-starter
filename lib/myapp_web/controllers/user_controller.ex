@@ -26,7 +26,7 @@ defmodule MyAppWeb.UserController do
       {:ok, user} ->
         Email.activation_email(conn, user) |> Mailer.deliver_now
         conn
-        |> MyApp.Auth.login(user)
+        |> MyAppWeb.Auth.login(user)
         |> redirect(to: account_path(conn, :show_activation_status, user.id))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)

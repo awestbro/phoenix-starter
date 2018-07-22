@@ -40,15 +40,14 @@ config :myapp, MyApp.Mailer,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :guardian, Guardian,
+config :myapp, MyAppWeb.Guardian,
   allower_algos: ["HS512"],
   verify_module: Guardian.JWT,
-  issuer: "MyApp",
+  issuer: "myapp",
   ttl: { 30, :days },
   allowed_drift: 2000,
   verify_issuer: true,
-  secret_key: System.get_env("GUARDIAN_SECRET"),
-  serializer: MyApp.Auth.GuardianSerializer
+  secret_key: System.get_env("GUARDIAN_SECRET")
 
 # ## SSL Support
 #

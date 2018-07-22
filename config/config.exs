@@ -27,15 +27,14 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :guardian, Guardian,
+config :myapp, MyAppWeb.Guardian,
   allower_algos: ["HS512"],
   verify_module: Guardian.JWT,
-  issuer: "MyApp",
+  issuer: "myapp",
   ttl: { 30, :days },
   allowed_drift: 2000,
   verify_issuer: true,
-  secret_key: "AyyylmaoImASecrett",
-  serializer: MyApp.Auth.GuardianSerializer
+  secret_key: "AyyylmaoImASecrett"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

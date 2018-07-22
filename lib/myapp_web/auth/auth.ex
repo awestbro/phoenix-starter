@@ -1,4 +1,6 @@
-defmodule MyApp.Auth do
+defmodule MyAppWeb.Auth do
+  @claims %{typ: "access"}
+
   import Plug.Conn
   import Phoenix.Controller
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
@@ -6,7 +8,7 @@ defmodule MyApp.Auth do
   def init([]), do: false
 
   def call(conn, _opts) do
-    current_user = Guardian.Plug.current_resource(conn)
+    current_user = MyAppWeb.Guardian.Plug.current_resource(conn)
     assign(conn, :current_user, current_user)
   end
 
@@ -42,7 +44,7 @@ defmodule MyApp.Auth do
 
   def login(conn, user) do
     conn
-    |> Guardian.Plug.sign_in(user)
+    |> MyAppWeb.Guardian.Plug.sign_in(user, @claims)
     |> assign(:current_user, user)
   end
 
@@ -62,7 +64,7 @@ defmodule MyApp.Auth do
   end
 
   def logout(conn) do
-    Guardian.Plug.sign_out(conn)
+    MyAppWeb.Guardian.Plug.sign_out(conn)
   end
 
 end

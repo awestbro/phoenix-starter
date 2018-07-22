@@ -44,7 +44,7 @@ defmodule MyAppWeb.AccountController do
       Accounts.update_user(user, %{activation_token: nil, activated: true})
       user = Accounts.get_user!(id)
       conn
-      |> MyApp.Auth.login(user)
+      |> MyAppWeb.Auth.login(user)
       |> put_flash(:info, "Welcome to MyApp!")
       |> redirect(to: page_path(conn, :index))
     end

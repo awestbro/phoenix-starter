@@ -23,7 +23,7 @@ defmodule MyAppWeb do
       import Plug.Conn
       import MyAppWeb.Router.Helpers
       import MyAppWeb.Gettext
-      import MyApp.Auth, only: [authenticate_user: 2]
+      import MyAppWeb.Auth, only: [authenticate_user: 2]
     end
   end
 
