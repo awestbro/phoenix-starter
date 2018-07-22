@@ -41,14 +41,14 @@ defmodule MyApp.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:comeonin, "~> 4.0.1"},
+      {:comeonin, "~> 4.1.1"},
       {:bcrypt_elixir, "~> 1.0.1"},
       {:guardian, "~> 0.14.5"},
       {:httpoison, "~> 0.13.0"},
       {:uuid, "~> 1.1.7"},
       {:timex, "~> 3.1.24"},
       {:credo, "~> 0.8.6", only: [:dev], runtime: false},
-      {:bamboo, "~> 0.8"}
+      {:bamboo, "~> 1.0.0"}
     ]
   end
 

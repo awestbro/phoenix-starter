@@ -26,3 +26,4 @@ npm-debug.log
 # variables.
 /config/*.secret.exs
 .DS_Store
+.elixir_ls/
