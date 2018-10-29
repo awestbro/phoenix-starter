@@ -27,3 +27,6 @@ npm-debug.log
 /config/*.secret.exs
 .DS_Store
 .elixir_ls/
+
+# Just use yarn
+assets/package-lock.json
