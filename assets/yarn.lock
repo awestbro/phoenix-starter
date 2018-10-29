@@ -2669,7 +2669,7 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-jquery@^3.1.1:
+jquery@>=1.9.0, jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
   integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==
@@ -4690,6 +4690,13 @@ unique-slug@^2.0.0:
   integrity sha1-22Z258fMBimHj/GWCXx4hVrp9Ks=
   dependencies:
     imurmurhash "^0.1.4"
+
+unpoly@^0.57.0:
+  version "0.57.0"
+  resolved "https://registry.yarnpkg.com/unpoly/-/unpoly-0.57.0.tgz#83a3bbdf8b4c4716f311d34e5aa84d1981b6ba12"
+  integrity sha512-AyWUB28ynN9hEB2pXn32u8zAOqgeCzMTSxV2ylFP+KlcLr+UakvQmgWK/Tz//tz0ilZ0l5xzLYXUxdQwfWK7/A==
+  dependencies:
+    jquery ">=1.9.0"
 
 unset-value@^1.0.0:
   version "1.0.0"

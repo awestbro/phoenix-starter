@@ -2,6 +2,8 @@ import "phoenix"
 import "phoenix_html"
 import "./util/bulma"
 
+window.$ = window.jQuery = require("jquery");
+
 // Authentication
 
 let authenticated = false;

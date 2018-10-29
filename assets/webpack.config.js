@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -28,12 +29,16 @@ const webpackConfig = {
     new MiniCssExtractPlugin({
       filename: "app.css",
     }),
-    new CopyWebpackPlugin([
-      {
-        from: path.join(paths.src, 'static'),
-        to: paths.static
-      }
-    ])
+    new CopyWebpackPlugin([{
+      from: path.join(paths.src, 'static'),
+      to: paths.static
+    }, {
+      from: 'node_modules/unpoly/dist/unpoly.min.js',
+      to: paths.build,
+    }, {
+      from: 'node_modules/unpoly/dist/unpoly.min.css',
+      to: paths.build,
+    }])
   ],
   module: {
     rules: [

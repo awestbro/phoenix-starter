@@ -13,18 +13,9 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/dist/app.css") %>">
     <link rel="icon" type="image/png" href="<%= static_path(@conn, "/files/favicon-32x32.png") %>" sizes="32x32" />
     <link rel="icon" type="image/png" href="<%= static_path(@conn, "/files/favicon.ico") %>" sizes="16x16" />
-    <%= if Mix.env != :dev do %>
-      <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-106114754-1', 'auto');
-        ga('send', 'pageview');
-
-      </script>
-    <% end %>
+    <script src="<%= static_path(@conn, "/dist/app.js") %>"></script>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/dist/unpoly.min.css") %>">
+    <script src="<%= static_path(@conn, "/dist/unpoly.min.js") %>"></script>
   </head>
 
   <body>
@@ -32,7 +23,7 @@
       <nav class="navbar">
 
         <div class="navbar-brand">
-          <%= link "MyApp", to: page_path(@conn, :index), class: "navbar-item page-title is-primary" %>
+          <%= link "MyApp", to: page_path(@conn, :index), class: "navbar-item page-title is-primary", "up-follow": "" %>
           <div class="navbar-burger" data-target="nav-menu">
             <span></span>
             <span></span>
@@ -64,6 +55,5 @@
     <%= render MyAppWeb.LayoutView, "notification.html", assigns %>
 
     <%= render @view_module, @view_template, assigns %>
-    <script src="<%= static_path(@conn, "/dist/app.js") %>"></script>
   </body>
 </html>
