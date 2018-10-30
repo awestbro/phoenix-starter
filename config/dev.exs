@@ -69,3 +69,8 @@ config :myapp, MyApp.Repo,
   database: "myapp_dev",
   hostname: "localhost",
   pool_size: 10
+
+# On commit, run the formatter
+config :pre_commit,
+  commands: ["format"],
+  verbose: true
