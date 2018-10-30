@@ -1,12 +1,6 @@
 <section class="section">
   <div class="container">
-    <%= render MyAppWeb.LayoutView, "header.html", text: "User" %>
-    <ul>
-      <li>
-        <strong>Username:</strong>
-        <%= @user.username %>
-      </li>
-    </ul>
+    <%= render MyAppWeb.LayoutView, "header.html", text: "#{@user.username}" %>
     <%= if @current_user == @user do %>
       <div class="mt3">
         <%= link "Edit", to: user_path(@conn, :edit, @user) %>

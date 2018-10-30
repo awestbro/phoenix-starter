@@ -59,6 +59,11 @@ defmodule MyApp.Accounts.User do
     |> put_pass_hash()
   end
 
+  def update_changeset(model, params) do
+    model
+    |> cast(params, [])
+  end
+
   def change_password_changeset(model, params) do
     model
     |> registration_changeset(params)

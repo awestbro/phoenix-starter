@@ -59,7 +59,7 @@ defmodule MyAppWeb.UserController do
     user = Accounts.get_user!(id)
 
     if can_modify_user?(conn, user) do
-      case Accounts.update_user(user, user_params) do
+      case Accounts.edit_user(user, user_params) do
         {:ok, user} ->
           conn
           |> put_flash(:info, "User updated successfully.")

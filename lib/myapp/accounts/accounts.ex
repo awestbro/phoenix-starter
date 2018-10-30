@@ -113,6 +113,12 @@ defmodule MyApp.Accounts do
     |> Repo.update!()
   end
 
+  def edit_user(%User{} = user, attrs) do
+    user
+    |> User.update_changeset(attrs)
+    |> Repo.update()
+  end
+
   @doc """
   Deletes a User.
 
