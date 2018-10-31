@@ -1,6 +1,12 @@
-import "phoenix"
-import "phoenix_html"
-import "./util/bulma"
+window.$ = window.jQuery = require("jquery");
+
+import 'phoenix';
+import 'jquery-ujs';
+import './util/bulma';
+
+import Turbolinks from 'turbolinks';
+
+Turbolinks.start();
 
 // Authentication
 

@@ -50,6 +50,7 @@ defmodule MyApp.Mixfile do
       {:postgrex, "~> 0.13.5"},
       {:pre_commit, "~> 0.3.4", only: :dev},
       {:timex, "~> 3.3.0"},
+      {:turbolinks, "~> 1.0.1"},
       {:uuid, "~> 1.1.7"}
     ]
   end

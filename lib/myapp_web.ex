@@ -20,6 +20,7 @@ defmodule MyAppWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: MyAppWeb
+      use Turbolinks
       import Plug.Conn
       import MyAppWeb.Router.Helpers
       import MyAppWeb.Gettext
@@ -34,7 +35,7 @@ defmodule MyAppWeb do
         namespace: MyAppWeb
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import Phoenix.Controller, only: [get_flash: 2, view_module: 1, get_csrf_token: 0]
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
