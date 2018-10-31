@@ -1,14 +1,14 @@
 <%= if get_flash(@conn, :info) != nil or get_flash(@conn, :error) != nil do %>
   <section class="section notification-section">
     <%= if get_flash(@conn, :info) do %>
-      <div class="notification is-info">
-        <button class="delete"></button>
+      <div class="notification is-info" data-controller="notification">
+        <button class="delete" data-action="click->notification#close"></button>
         <%= get_flash(@conn, :info) %>
       </div>
     <% end %>
     <%= if get_flash(@conn, :error) do %>
-      <div class="notification is-warning">
-        <button class="delete"></button>
+      <div class="notification is-warning" data-controller="notification">
+        <button class="delete" data-action="click->notification#close"></button>
         <%= get_flash(@conn, :error) %>
       </div>
     <% end %>

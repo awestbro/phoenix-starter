@@ -24,7 +24,7 @@
 
         <div class="navbar-brand">
           <%= link "MyApp", to: page_path(@conn, :index), class: "navbar-item page-title is-primary" %>
-          <div class="navbar-burger" data-target="nav-menu">
+          <div class="navbar-burger" data-target="nav-menu" data-controller="navbar-mobile-toggle" data-action="click->navbar-mobile-toggle#toggle">
             <span></span>
             <span></span>
             <span></span>

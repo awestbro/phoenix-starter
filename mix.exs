@@ -41,6 +41,7 @@ defmodule MyApp.Mixfile do
       {:gettext, "~> 0.15.0"},
       {:guardian, "~> 1.1.0"},
       {:httpoison, "~> 1.2.0"},
+      {:plug, "~> 1.7", override: true},
       {:plug_cowboy, "~> 1.0"},
       {:phoenix, "~> 1.3.3"},
       {:phoenix_ecto, "~> 3.3.0"},
