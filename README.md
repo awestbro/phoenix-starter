@@ -27,6 +27,10 @@ Front end:
 - [PostCSS](https://github.com/postcss/postcss)
 - [SASS](http://sass-lang.com/)
 
+### Variations
+
+The [turbolinks](https://github.com/awestbro/phoenix-starter/tree/turbolinks) branch contains a setup for turbolinks and stimiulusjs. 
+
 ### Installation
 
 Tested with:
