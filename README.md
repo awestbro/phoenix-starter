@@ -1,7 +1,6 @@
 Phoenix Starter
 ===============
 
-
 ![Screenshot](docs/assets/home.png)
 
 
